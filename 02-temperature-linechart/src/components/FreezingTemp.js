@@ -9,6 +9,6 @@ export const FreezingTemp = ({
             y={yScale(32)}
             height={innerHeight - yScale(32)}
             width={innerWidth}
-            fill="cornflowerblue"
+            fill="#e0f3f3"
         />
 );

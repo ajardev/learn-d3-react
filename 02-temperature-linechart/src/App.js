@@ -1,4 +1,4 @@
-import { scaleTime, scaleLinear, max, extent, timeParse, timeFormat } from 'd3';
+import { scaleTime, scaleLinear, min, max, extent, timeParse, timeFormat } from 'd3';
 import { useData } from './hooks/useData';
 import { AxisBottom } from './components/AxisBottom';
 import { AxisLeft } from './components/AxisLeft';
@@ -25,7 +25,7 @@ const App = ({ width, height, margin }) => {
     const xAxisTickFormat = timeFormat('%B');
 
     // Create y axis
-    const yScale = scaleLinear().domain([0, max(data, yValue)])
+    const yScale = scaleLinear().domain([min(data, yValue) * 0.75, max(data, yValue)])
                               .range([innerHeight, 0]); // range refers to highest and lowest numbers to display
                               
     // Create x axis

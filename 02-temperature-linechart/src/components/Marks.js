@@ -9,7 +9,8 @@ export const Marks = ({
   <g className="marks">
     <path
       fill="none"
-      stroke="black"
+      stroke="#af9358"
+      strokeWidth={2}
       d={line()
         .x(d => xScale(xValue(d)))
         .y(d => yScale(yValue(d)))
