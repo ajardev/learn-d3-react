@@ -13,7 +13,7 @@ code {
 }
 
 .line-chart {
-    display: flex;
+    display: inline-block;
     position: relative;
 }
 

@@ -15,6 +15,16 @@ const App = ({ width, height, margin }) => {
         setMousePosition({ x: clientX, y: clientY });
     }, [setMousePosition]);
 
+    const [opacity, setOpacity] = useState(0);
+
+    const showTip = () => {
+        setOpacity(1);
+      };
+    
+      const hideTip = () => {
+        setOpacity(0);
+      };
+
     // Read data with custom hook
     const data = useData();
     const dateFormatString = "%Y-%m-%d"
@@ -62,14 +72,11 @@ const App = ({ width, height, margin }) => {
     const xPos = xScale(closestXValue) + margin.left
     const yPos = yScale(closestYValue) + margin.top
 
-    console.log(xPos)
-    console.log(mousePosition.x)
-
-    // const xValue = d => dateParser(d.date);
+    console.log(opacity)
 
     return (
-    <div className='line-chart' onMouseMove={handleMouseMove}>
-        <svg width={width} height={height}>
+    <div className='line-chart' onMouseMove={handleMouseMove} onMouseEnter={showTip} onMouseLeave={hideTip} >
+        <svg width={width} height={height} >
             <g transform={`translate(${margin.left}, ${margin.top})`}>
                 <FreezingTemp 
                     yScale={yScale}
@@ -103,6 +110,7 @@ const App = ({ width, height, margin }) => {
             yPos={yPos}
             xTooltipFormat={xTooltipFormat}
             yTooltipFormat={yTooltipFormat}
+            opacity={opacity}
         />
     </div>
 );
